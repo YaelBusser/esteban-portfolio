@@ -1,0 +1,40 @@
+@use "./variables" as vars;
+
+
+html,
+body {
+  margin: 0;
+}
+
+.app {
+
+}
+
+p {
+  font-family: vars.$textFont;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.comments {
+  color: vars.$comments;
+}
+
+.var {
+  color: vars.$varColor;
+
+  .equal {
+    color: white;
+  }
+
+  .value {
+    color: vars.$valueColor;
+  }
+}
+
+.blockText {
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+}
