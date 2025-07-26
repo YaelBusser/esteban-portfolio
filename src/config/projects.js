@@ -1,38 +1,14 @@
 import {marked} from 'marked';
 
-const parseYamlFrontMatter = (markdownContent) => {
-    const yamlMatch = markdownContent.match(/^---\s*([\s\S]*?)\s*---/);
-    if (!yamlMatch) return null;
-
-    const yamlContent = yamlMatch[1];
-    const metadata = {};
-
-    yamlContent.split('\n').forEach(line => {
-        const colonIndex = line.indexOf(':');
-        if (colonIndex > 0) {
-            const key = line.substring(0, colonIndex).trim();
-            let value = line.substring(colonIndex + 1).trim();
-            
-            if (value.startsWith('"') && value.endsWith('"')) {
-                value = value.slice(1, -1);
-            }
-            
-            if (key === 'tags' && value.startsWith('[') && value.endsWith(']')) {
-                value = value.slice(1, -1).split(',').map(tag => tag.trim());
-            }
-            
-            metadata[key] = value;
-        }
-    });
-
-    return metadata;
-};
-
 const PROJECTS_LIST = [
     'UsineDuFutur',
     'FormulePolytechniqueMontreal',
     'Portfolio'
 ];
+
+const fixImagePaths = (content, projectId) => {
+    return content.replace(/\.\/([^)\s]+\.(jpg|jpeg|png|gif|svg))/g, `/esteban-portfolio/projects/${projectId}/$1`);
+};
 
 export const getProjectsConfig = async () => {
     try {
@@ -40,26 +16,20 @@ export const getProjectsConfig = async () => {
 
         for (const projectId of PROJECTS_LIST) {
             try {
-                const response = await fetch(`/esteban-portfolio/projects/${projectId}/index.md`);
+                const response = await fetch(`/esteban-portfolio/projects/${projectId}/project.json`);
                 if (!response.ok) {
                     console.warn(`Projet ${projectId} non trouvé, ignoré`);
                     continue;
                 }
                 
-                const markdownContent = await response.text();
-                const metadata = parseYamlFrontMatter(markdownContent);
+                const projectData = await response.json();
                 
-                if (!metadata) {
-                    console.warn(`Aucune métadonnée YAML trouvée pour ${projectId}`);
-                    continue;
-                }
-
                 const projectConfig = {
-                    id: projectId,
-                    title: metadata.title || 'Projet sans titre',
-                    date: metadata.date || '',
-                    cover: metadata.cover ? metadata.cover.replace('./', `/esteban-portfolio/projects/${projectId}/`) : '',
-                    tags: metadata.tags || []
+                    id: projectData.id,
+                    title: projectData.title || 'Projet sans titre',
+                    date: projectData.date || '',
+                    cover: projectData.cover ? projectData.cover.replace('./', `/esteban-portfolio/projects/${projectId}/`) : '',
+                    tags: projectData.tags || []
                 };
 
                 projectsConfig.push(projectConfig);
@@ -77,14 +47,17 @@ export const getProjectsConfig = async () => {
 
 export const loadProjectContent = async (projectId) => {
     try {
-        const response = await fetch(`/esteban-portfolio/projects/${projectId}/index.md`);
+        const response = await fetch(`/esteban-portfolio/projects/${projectId}/project.json`);
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
         
-        const markdownContent = await response.text();
-        const contentWithoutYaml = markdownContent.replace(/^---\s*[\s\S]*?---\s*/m, '');
-        const htmlContent = marked(contentWithoutYaml);
+        const projectData = await response.json();
+        let markdownContent = projectData.content || '';
+        
+        markdownContent = fixImagePaths(markdownContent, projectId);
+        
+        const htmlContent = marked(markdownContent);
         
         return htmlContent;
     } catch (error) {

@@ -61,6 +61,6 @@ Malgré cela, j'ai beaucoup apprécié l'expérience, notamment l'aspect **brico
 
 ## 📷 Illustrations
 
-![Gif de l'enceinte](/esteban-portfolio/projects/UsineDuFutur/Usine_du_Futur_Cottineau_Esteban_4A.gif "Gif de l'enceinte")
+![Gif de l'enceinte](/esteban-portfolio/projects/UsineDuFutur/usine.gif "Gif de l'enceinte")
 
 ---

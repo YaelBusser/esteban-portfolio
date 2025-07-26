@@ -1,0 +1,8 @@
+{
+  "id": "Portfolio",
+  "title": "Portfolio Personnel",
+  "date": "2025-01-15",
+  "cover": "./figma.png",
+  "tags": ["React", "JavaScript", "CSS", "Web Design"],
+  "content": "## Description du projet\n\nCe portfolio personnel a été développé avec React et utilise des technologies modernes pour créer une interface utilisateur intuitive et responsive.\n\n## Technologies utilisées\n\n- **React** : Framework principal\n- **JavaScript** : Logique métier\n- **CSS** : Styling et animations\n- **Web Design** : UX/UI\n\n## Fonctionnalités\n\n- Interface responsive\n- Animations fluides\n- Performance optimisée\n- Code maintenable\n\n## Résultats\n\nLe projet a été livré dans les délais et respecte toutes les spécifications demandées.\n\n## 📷 Captures d'écran\n\n![Capture du projet](./figma.png)"
+} 
