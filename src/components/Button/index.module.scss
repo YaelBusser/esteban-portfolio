@@ -44,3 +44,20 @@
   font-weight: 500;
   transition: color 0.3s ease-in-out;
 }
+
+// Responsive design
+@media (max-width: 768px) {
+  .button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 16px;
+  }
+}

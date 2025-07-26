@@ -3,9 +3,41 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  
   .projects{
     width: 80%;
+    max-width: 1200px;
     position: absolute;
     top: 90vh;
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .container {
+    .projects {
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    .projects {
+      width: 100%;
+      position: relative;
+      top: 0;
+      padding: 2rem 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    .projects {
+      padding: 1rem 0;
+    }
   }
 }

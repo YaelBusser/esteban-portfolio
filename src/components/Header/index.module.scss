@@ -11,6 +11,7 @@
   display: flex;
   border-bottom: 1px solid transparent;
   justify-content: center;
+  align-items: center;
   z-index: 9;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -99,6 +100,88 @@
       a{
         color: vars.$tertiaryColor;
         text-decoration: none;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 1024px) {
+  .header {
+    .content {
+      width: 90%;
+      
+      nav {
+        .menu li a {
+          font-size: 1.1rem;
+        }
+      }
+      
+      .logo svg {
+        width: 4.5rem;
+        height: 4.5rem;
+      }
+      
+      .getInTouch {
+        width: 9rem;
+        height: 2.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 6rem;
+    
+    .content {
+      width: 95%;
+      
+      nav {
+        .menu li a {
+          font-size: 1rem;
+        }
+      }
+      
+      .logo svg {
+        width: 4rem;
+        height: 4rem;
+      }
+      
+      .getInTouch {
+        width: 8rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 5rem;
+    
+    .content {
+      width: 100%;
+      padding: 0 1rem;
+      
+      nav {
+        .menu li {
+          padding: 0 8px;
+        }
+        
+        .menu li a {
+          font-size: 0.9rem;
+        }
+      }
+      
+      .logo svg {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+      
+      .getInTouch {
+        width: 7rem;
+        height: 2.2rem;
       }
     }
   }
