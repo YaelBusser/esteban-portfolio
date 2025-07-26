@@ -1,9 +1,13 @@
-import {useState} from 'react'
+import styles from "./styles/main.module.scss";
+import Header from "./components/Header/index.jsx";
+import HeroBanner from "./components/HeroBanner/index.jsx";
 
-function App() {
+const App = () => {
 
     return (
-        <div>
+        <div className={styles.container}>
+            <Header />
+            <HeroBanner />
         </div>
     )
 }

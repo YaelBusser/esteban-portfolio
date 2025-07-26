@@ -1,0 +1,64 @@
+@use "../../styles/variables.module" as vars;
+
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .description {
+    width: 80%;
+    z-index: 6;
+    margin-bottom: 6rem;
+
+    .title {
+      color: vars.$tertiaryColor;
+      font-size: 90px;
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .descriptionOfDescription {
+      margin-top: 2rem;
+      width: 33rem;
+      font-size: 1.2rem;
+    }
+  }
+  .skills{
+    display: flex;
+    flex-wrap: wrap;
+    .skill{
+      .cpp{
+
+      }
+      .c{
+
+      }
+      .python{
+
+      }
+      .bash{
+
+      }
+    }
+  }
+  .banner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: end;
+    z-index: -1;
+
+    img {
+      width: 50%;
+    }
+
+  }
+}
