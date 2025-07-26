@@ -1,10 +1,11 @@
 import styles from "./index.module.scss";
 import Button from "../Button/index.jsx";
-import Logo from "../../assets/logo.svg?react";
+import Logo from "../../assets/Logo";
 import React, { useEffect, useState } from "react";
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isLogoHovered, setIsLogoHovered] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,18 +33,35 @@ const Header = () => {
         borderRef.current.style.width = '0px';
     };
 
+    const handleLogoClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleProjectsClick = (e) => {
+        e.preventDefault();
+        const projectsSection = document.querySelector('[data-section="projects"]');
+        if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
             <div className={styles.content}>
                 <nav>
                     <ul className={styles.menu} ref={menuRef}>
                         <li><a href="/esteban-portfolio/CV.pdf" target="_blank" rel="noopener noreferrer" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>About Me</a></li>
-                        <li><a href="#" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Projects</a></li>
+                        <li><a href="#" onClick={handleProjectsClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Projects</a></li>
                         <div className={styles.border} ref={borderRef}></div>
                     </ul>
                 </nav>
-                <div className={styles.logo}>
-                    <Logo/>
+                <div 
+                    className={`${styles.logo} ${isLogoHovered ? styles.logoHovered : ""}`}
+                    onMouseEnter={() => setIsLogoHovered(true)}
+                    onMouseLeave={() => setIsLogoHovered(false)}
+                    onClick={handleLogoClick}
+                >
+                    <Logo />
                 </div>
                 <div className={styles.getInTouch}>
                     <Button mailto={true}>Get in touch</Button>

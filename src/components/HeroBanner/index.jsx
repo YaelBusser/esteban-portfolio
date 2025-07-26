@@ -1,5 +1,4 @@
 import styles from "./index.module.scss";
-import Projects from "../Projects/index.jsx";
 
 const HeroBanner = () => {
     return (
@@ -13,7 +12,6 @@ const HeroBanner = () => {
             </div>
             <div className={styles.containerSkills}>
                 <div className={styles.skills}>
-
                     <div className={`${styles.skill} ${styles.cpp}`}>C++</div>
                     <div className={`${styles.skill} ${styles.c}`}>C</div>
                     <div className={`${styles.skill} ${styles.python}`}>Python</div>

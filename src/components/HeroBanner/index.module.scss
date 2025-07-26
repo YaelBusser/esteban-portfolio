@@ -35,8 +35,8 @@
 
     .skills {
       display: flex;
+      width: 20rem;
       flex-wrap: wrap;
-      width: 25%;
       gap: 1rem;
 
       .skill {
@@ -78,7 +78,7 @@
     right: 0;
     display: flex;
     justify-content: end;
-    z-index: -1;
+    z-index: 1;
 
     img {
       width: 50%;
