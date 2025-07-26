@@ -1,6 +1,7 @@
 import styles from "./styles/main.module.scss";
 import Header from "./components/Header/index.jsx";
 import HeroBanner from "./components/HeroBanner/index.jsx";
+import Projects from "./components/Projects/index.jsx";
 
 const App = () => {
 
@@ -8,6 +9,9 @@ const App = () => {
         <div className={styles.container}>
             <Header />
             <HeroBanner />
+            <div className={styles.projects}>
+                <Projects />
+            </div>
         </div>
     )
 }

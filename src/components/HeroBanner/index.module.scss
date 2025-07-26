@@ -29,24 +29,48 @@
       font-size: 1.2rem;
     }
   }
-  .skills{
-    display: flex;
-    flex-wrap: wrap;
-    .skill{
-      .cpp{
 
+  .containerSkills {
+    width: 80%;
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      width: 25%;
+      gap: 1rem;
+
+      .skill {
+        width: auto;
+        height: 2rem;
+        font-family: vars.$secondaryFont;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        font-size: 40px;
+        border-radius: 7px 7px 7px 7px;
+        user-select: none;
       }
-      .c{
 
+      .cpp {
+        background-color: vars.$secondaryColor !important;
       }
-      .python{
 
+      .c {
+        background-color: vars.$primaryColor !important;
       }
-      .bash{
 
+      .python {
+        background-color: vars.$tertiaryColor !important;
+        color: white;
+      }
+
+      .bash {
+        background-color: vars.$buttonColor !important;
       }
     }
   }
+
   .banner {
     position: absolute;
     width: 100%;
@@ -60,5 +84,9 @@
       width: 50%;
     }
 
+  }
+
+  .projects{
+    width: 80%;
   }
 }
